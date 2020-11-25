@@ -32,13 +32,9 @@ public class QuestionPanel extends JPanel {
     private ObjectOutputStream oos;
 
     public QuestionPanel(Question newQuestion) {
-        setLayout(new BorderLayout());
+        setLayout(null);
         setBackground(new Color(127, 61, 61));
 
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(null);
-        add(buttonPanel);
-        buttonPanel.setBackground(new Color(127, 61, 61));
 
         label= new JLabel(newQuestion.getQuestion(), SwingConstants.CENTER);
 
@@ -58,22 +54,19 @@ public class QuestionPanel extends JPanel {
         b3.setBounds(30, 250, 155, 50);
         b4.setBounds(215, 250, 155, 50);
 
-        //label.setLocation(50, 100);
-
+        label.setBounds(10, 100, 400,50);
+        label.setFont(questionFont);
 
         b1.setFont(alternativesFont);
         b2.setFont(alternativesFont);
         b3.setFont(alternativesFont);
         b4.setFont(alternativesFont);
 
-        add(label, BorderLayout.NORTH);
-        label.setFont(questionFont);
-
-
-        buttonPanel.add(b1);
-        buttonPanel.add(b2);
-        buttonPanel.add(b3);
-        buttonPanel.add(b4);
+        add(label);
+        add(b1);
+        add(b2);
+        add(b3);
+        add(b4);
     }
 
     public void addQuestionToPanel(Question question) {
