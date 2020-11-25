@@ -19,10 +19,9 @@ public class NewGamePanel extends JPanel {
     JButton newSpel = new JButton("Nytt spel");
 
     public NewGamePanel(GameFrame gameFrame) {
+        setLayout(null);
         add(mainPanel);
-        mainPanel.setSize(400, 500);
-        mainPanel.setBackground(new Color(127, 61, 61));
-        mainPanel.setLayout(null);
+        setBackground(new Color(127, 61, 61));
 
         newSpel.setBounds(50, 150, 300, 50);
 

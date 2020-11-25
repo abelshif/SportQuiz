@@ -18,7 +18,7 @@ import java.io.ObjectOutputStream;
  */
 public class QuestionPanel extends JPanel {
 
-    Font questionFont = new Font("Tahoma", Font.BOLD, 40);
+    Font questionFont = new Font("Tahoma", Font.BOLD, 15);
     Font alternativesFont = new Font("Tahoma", Font.PLAIN, 25);
 
     JLabel label;
@@ -33,10 +33,12 @@ public class QuestionPanel extends JPanel {
 
     public QuestionPanel(Question newQuestion) {
         setLayout(new BorderLayout());
+        setBackground(new Color(127, 61, 61));
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(null);
         add(buttonPanel);
+        buttonPanel.setBackground(new Color(127, 61, 61));
 
         label= new JLabel(newQuestion.getQuestion(), SwingConstants.CENTER);
 
@@ -56,22 +58,13 @@ public class QuestionPanel extends JPanel {
         b3.setBounds(30, 250, 155, 50);
         b4.setBounds(215, 250, 155, 50);
 
+        //label.setLocation(50, 100);
+
 
         b1.setFont(alternativesFont);
-        b1.setBackground(Color.YELLOW);
-        b1.setOpaque(true);
-
         b2.setFont(alternativesFont);
-        b2.setBackground(Color.YELLOW);
-        b2.setOpaque(true);
-
         b3.setFont(alternativesFont);
-        b3.setBackground(Color.YELLOW);
-        b3.setOpaque(true);
-
         b4.setFont(alternativesFont);
-        b4.setBackground(Color.YELLOW);
-        b4.setOpaque(true);
 
         add(label, BorderLayout.NORTH);
         label.setFont(questionFont);
