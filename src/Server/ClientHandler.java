@@ -16,10 +16,15 @@ public class ClientHandler extends Thread{
     Socket clientSocket;
     DAO questionsDatabase;
     ClientHandler opponent;
+    ServerSideGame game;
 
-    public ClientHandler(Socket clientSocket, DAO questionsDatabase) {
+    ObjectOutputStream oos;
+    ObjectInputStream ois;
+
+    public ClientHandler(Socket clientSocket, DAO questionsDatabase, ServerSideGame game) {
         this.clientSocket = clientSocket;
         this.questionsDatabase = questionsDatabase;
+        this.game = game;
     }
 
     public void setOpponent(ClientHandler opponent) {
@@ -35,42 +40,27 @@ public class ClientHandler extends Thread{
         try {
             ObjectOutputStream writer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
+            this.oos = writer;
+            this.ois = reader;
 
-            Question question = (Question) questionsDatabase.handleQuestion(null);
-
-            //Skickar fråga till Clienten
-            writer.writeObject("Välj catagorie");
 
             Object input;
             while ((input = reader.readObject()) != null) {
+                game.game(input);
                 System.out.println("Get message " + input);
-
-                if(input.equals("Geografi")){
-                    question = questionsDatabase.g1;
-                    writer.writeObject(question);
-                }
-                else if(input.equals("Nöje")){
-                    question = questionsDatabase.p1;
-                    writer.writeObject(question);
-                }
-                else if(input.equals("Sport")){
-                    question = questionsDatabase.s1;
-                    writer.writeObject(question);
-                }
-                else if(input.equals("Matematik")){
-                    question = questionsDatabase.m1;
-                    writer.writeObject(question);
-                }
-                else if (input.equals(question.getAnswer())){
-                    writer.writeObject("Svaret är korrekt! " + input);
-                    writer.writeObject("End of game");
-                } else {
-                    writer.writeObject("Svaret är fel! " + input);
-                    writer.writeObject("End of game");
-                }
 
             }
         } catch(IOException | ClassNotFoundException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void sendMessage(Object obj){
+        try{
+            oos.writeObject(obj);
+            oos.flush();
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }

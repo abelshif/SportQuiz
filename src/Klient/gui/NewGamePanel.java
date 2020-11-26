@@ -29,8 +29,6 @@ public class NewGamePanel extends JPanel {
 
         newSpel.setOpaque(true);
 
-        //mainPanel.add(newSpel);
-
         setVisible(true);
         setSize(400, 500);
         gameFrame.setLocationRelativeTo(null);

@@ -76,14 +76,11 @@ public class DAO {
     public String pleasureAnswer2() {return pleasure.get(1).getAnswer();}
 
 
-    public Object handleQuestion(Object o) {
+    public Object handleQuestion(String input) {
         return m2;
     }
 
     public static void main(String[] args) {
         DAO dao = new DAO();
-
-
     }
-
 }
