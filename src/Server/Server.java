@@ -20,19 +20,16 @@ public class Server {
 
         try {
             while (true) {
-                ServerSideGame game = new ServerSideGame(questions);
                 ClientHandler player1
-                        = new ClientHandler(socket.accept(), questions, game);
+                        = new ClientHandler(socket.accept(), questions);
                 ClientHandler player2
-                        = new ClientHandler(socket.accept(), questions, game);
+                        = new ClientHandler(socket.accept(), questions);
 
-
+                ServerSideGame game = new ServerSideGame(player1,player2);
 
                 player1.setOpponent(player2);
                 player2.setOpponent(player1);
                 game.currentPlayer = player1;
-                game.setPlayer1(player1);
-                game.setPlayer2(player2);
                 player1.start();
                 player2.start();
             }
@@ -46,4 +43,3 @@ public class Server {
         Server server = new Server();
     }
 }
-

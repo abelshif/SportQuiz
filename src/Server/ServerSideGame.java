@@ -13,56 +13,13 @@ import java.net.Socket;
  * Project: SportQuiz
  * Copyright: MIT
  */
-public class ServerSideGame extends Thread{
+public class ServerSideGame {
     ClientHandler currentPlayer;
     ClientHandler player1;
     ClientHandler player2;
 
-    DAO dao;
-    Question question;
-
-
-    public ServerSideGame(DAO dao){
-        this.dao = dao;
-    }
-
-    public void game(Object input){
-        if(((String)input).equals("Geografi")){
-            question = dao.g1;
-            dao.handleQuestion((String)input);
-            player1.sendMessage(question);
-        }
-        else if(((String)input).equals("Nöje")){
-            question = dao.p1;
-            //writer.writeObject(question);
-        }
-        else if(((String)input).equals("Sport")){
-            question = dao.s1;
-            //writer.writeObject(question);
-        }
-        else if(((String)input).equals("Matematik")){
-            question = dao.m1;
-            //writer.writeObject(question);
-        }
-        else if (((String)input).equals(question.getAnswer())){
-            player1.sendMessage("Svaret är korrekt! " + input);
-            player2.sendMessage("Svaret är korrekt! " + input);
-            player1.sendMessage("End of game");
-            player2.sendMessage("End of game");
-        } else {
-            player1.sendMessage("Svaret är fel! " + input);
-            player2.sendMessage("Svaret är fel! " + input);
-            player1.sendMessage("End of game");
-            player2.sendMessage("End of game");
-        }
-
-    }
-
-    public void setPlayer1(ClientHandler player1) {
+    public ServerSideGame(ClientHandler player1, ClientHandler player2){
         this.player1 = player1;
-    }
-
-    public void setPlayer2(ClientHandler player2) {
         this.player2 = player2;
     }
 }
