@@ -12,6 +12,8 @@ public class ServerSideGame extends Thread{
     ClientHandler player1;
     ClientHandler player2;
 
+    int index = 0;
+
     DAO dao;
     Question question;
 
@@ -22,7 +24,7 @@ public class ServerSideGame extends Thread{
 
     public void game(Object input){
 
-        player1.sendMessage("Välj kategori");
+        player1.sendMessage("Hejsan");
         player2.sendMessage("Avvakta medans player1 väljer kategori");
 
         if(((String)input).equals("Geografi")){

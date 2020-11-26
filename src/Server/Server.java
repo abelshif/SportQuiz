@@ -27,7 +27,6 @@ public class Server {
                         = new ClientHandler(socket.accept(), questions, game);
 
 
-
                 player1.setOpponent(player2);
                 player2.setOpponent(player1);
                 game.currentPlayer = player1;

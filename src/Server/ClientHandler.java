@@ -40,9 +40,11 @@ public class ClientHandler extends Thread{
         try {
             ObjectOutputStream writer = new ObjectOutputStream(clientSocket.getOutputStream());
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
-            this.oos = writer;
-            this.ois = reader;
+            oos = writer;
+            ois = reader;
 
+
+            writer.writeObject("Välj kategori");
 
             Object input;
             while ((input = reader.readObject()) != null) {
