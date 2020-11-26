@@ -1,6 +1,6 @@
-package Klient.gui;
+package Client.gui;
 
-import Klient.ClientGame;
+import Client.ClientGame;
 
 import javax.swing.*;
 import java.awt.*;

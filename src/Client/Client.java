@@ -1,8 +1,6 @@
-package Klient;
+package Client;
 
-import Klient.gui.GameFrame;
-
-import java.io.IOException;
+import Client.gui.GameFrame;
 
 /**
  * Created by Philip Zamayeri

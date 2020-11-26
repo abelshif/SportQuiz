@@ -1,4 +1,4 @@
-package Klient.gui;
+package Client.gui;
 
 import Server.Question;
 
