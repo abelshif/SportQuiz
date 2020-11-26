@@ -51,7 +51,7 @@ public class ClientGame implements Runnable {
                     gameFrame.changeToQuestionPanel();
                 } else if(incomingObject instanceof String) {
                     String resultat = (String) incomingObject;
-                    if(resultat.contains("Välj catagorie")){
+                    if(resultat.contains("Välj kategori")){
                         gameFrame.changeToCatagoriesPanel();
                     }
                     else if(resultat.contains("End of game")) {
