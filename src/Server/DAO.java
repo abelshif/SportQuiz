@@ -1,6 +1,7 @@
 package Server;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -60,6 +61,11 @@ public class DAO {
         sport.add(s2);
         sport.add(s3);
         sport.add(s4);
+
+        Collections.shuffle(mathematics);
+        Collections.shuffle(geopgraphy);
+        Collections.shuffle(pleasure);
+        Collections.shuffle(sport);
 
     }
 
