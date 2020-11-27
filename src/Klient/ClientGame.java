@@ -22,7 +22,7 @@ import java.util.List;
  */
 public class ClientGame implements Runnable {
     int index = 0;
-    List<Object> questionList;
+    List<Object> questionList = new ArrayList<>();
 
 
     GameFrame gameFrame;
@@ -31,7 +31,6 @@ public class ClientGame implements Runnable {
 
         this.gameFrame = gameFrame;
 
-        questionList = new ArrayList<>();
     }
 
     @Override
@@ -59,7 +58,8 @@ public class ClientGame implements Runnable {
                     gameFrame.getQuestionPanel().setClickedButtonColor(Color.YELLOW);
                     gameFrame.getQuestionPanel().addQuestionToPanel((Question)questionList.get(0));
                     gameFrame.changeToQuestionPanel();
-                } else if(incomingObject instanceof String) {
+                }
+                else if(incomingObject instanceof String) {
                     String resultat = (String) incomingObject;
                     if(resultat.contains("Välj kategori")){
                         gameFrame.changeToCatagoriesPanel();
@@ -80,12 +80,13 @@ public class ClientGame implements Runnable {
                     else if (resultat.equalsIgnoreCase("Change question")){
                         gameFrame.getQuestionPanel().addQuestionToPanel((Question) questionList.get(1));
                         gameFrame.changeToQuestionPanel();
-                        //Thread.sleep(1000);
 
+                        //Thread.sleep(1000);
                     }
                     else if (resultat.equalsIgnoreCase("Change to categorypanel")){
                         gameFrame.changeToCatagoriesPanel();
                         //Thread.sleep(1000);
+                        questionList = new ArrayList<>();
                     }
                     else {
                         //Ändra färg
