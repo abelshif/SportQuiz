@@ -1,11 +1,9 @@
-package Client.gui;
+package Klient.gui;
 
-import Client.ClientGame;
+import Klient.ClientGame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by Philip Zamayeri

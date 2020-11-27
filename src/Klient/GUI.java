@@ -1,4 +1,4 @@
-package Client;
+package Klient;
 
 import Server.DAO;
 import Server.Question;

@@ -1,6 +1,6 @@
-package Client;
+package Klient;
 
-import Client.gui.GameFrame;
+import Klient.gui.GameFrame;
 import Server.Question;
 
 import java.awt.*;

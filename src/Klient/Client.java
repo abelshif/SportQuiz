@@ -1,6 +1,6 @@
-package Client;
+package Klient;
 
-import Client.gui.GameFrame;
+import Klient.gui.GameFrame;
 
 /**
  * Created by Philip Zamayeri
