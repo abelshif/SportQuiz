@@ -43,12 +43,14 @@ public class ClientHandler extends Thread{
             oos = writer;
             ois = reader;
 
-
-            writer.writeObject("Välj kategori");
+            //writer.writeObject("Välj kategori");
+            //methoden setReady från serverside game.
+            game.setReady(this);
 
             Object input;
             while ((input = reader.readObject()) != null) {
-                game.game(input);
+                //this, för att kunna se vem som skickade objectet input.
+                game.game(input, this);
                 System.out.println("Get message " + input);
 
             }

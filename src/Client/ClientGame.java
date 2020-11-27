@@ -9,6 +9,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  * Created by Philip Zamayeri
@@ -18,11 +21,17 @@ import java.net.Socket;
  * Copyright: MIT
  */
 public class ClientGame implements Runnable {
+    int index = 0;
+    List<Object> questionList;
+
 
     GameFrame gameFrame;
 
     public ClientGame (GameFrame gameFrame) {
+
         this.gameFrame = gameFrame;
+
+        questionList = new ArrayList<>();
     }
 
     @Override
@@ -46,8 +55,9 @@ public class ClientGame implements Runnable {
                 System.out.println("Server: " + incomingObject);
                 //Kollar om incomingObject är en Question
                 if(incomingObject instanceof Question) {
+                    questionList.add(incomingObject);
                     gameFrame.getQuestionPanel().setClickedButtonColor(Color.YELLOW);
-                    gameFrame.getQuestionPanel().addQuestionToPanel((Question) incomingObject);
+                    gameFrame.getQuestionPanel().addQuestionToPanel((Question)questionList.get(0));
                     gameFrame.changeToQuestionPanel();
                 } else if(incomingObject instanceof String) {
                     String resultat = (String) incomingObject;
@@ -64,15 +74,28 @@ public class ClientGame implements Runnable {
                     else if(resultat.contains("korrekt")) {
                         //Ändra färg
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.GREEN);
-                        Thread.sleep(1000);
-                    } else {
+                        gameFrame.getQuestionPanel().setOpaque(true);
+                        //Thread.sleep(1000);
+                    }
+                    else if (resultat.equalsIgnoreCase("Change question")){
+                        gameFrame.getQuestionPanel().addQuestionToPanel((Question) questionList.get(1));
+                        gameFrame.changeToQuestionPanel();
+                        //Thread.sleep(1000);
+
+                    }
+                    else if (resultat.equalsIgnoreCase("Change to categorypanel")){
+                        gameFrame.changeToCatagoriesPanel();
+                        //Thread.sleep(1000);
+                    }
+                    else {
                         //Ändra färg
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.RED);
-                        Thread.sleep(1000);
+                        gameFrame.getQuestionPanel().setOpaque(true);
+                        //Thread.sleep(1000);
                     }
                 }
             }
-        } catch (InterruptedException | IOException | ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
     }

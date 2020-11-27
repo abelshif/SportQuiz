@@ -63,6 +63,11 @@ public class DAO {
         sport.add(s3);
         sport.add(s4);
 
+        Collections.shuffle(mathematics);
+        Collections.shuffle(geopgraphy);
+        Collections.shuffle(pleasure);
+        Collections.shuffle(sport);
+
     }
 
     public String mathAnswer() {return mathematics.get(0).getAnswer();}
