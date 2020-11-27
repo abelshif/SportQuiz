@@ -1,5 +1,8 @@
 package Server;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Philip Zamayeri
  * Date: 2020-11-25
@@ -11,6 +14,8 @@ public class ServerSideGame extends Thread{
     ClientHandler currentPlayer;
     ClientHandler player1;
     ClientHandler player2;
+
+    List<Question> questionList = new ArrayList<>();
 
     int indexP1 = 0;
     int indexP2 = 0;
@@ -41,9 +46,12 @@ public class ServerSideGame extends Thread{
                 player2.sendMessage(question2);
             }//skickar frågan till player två också
             else if (categoryIndex == 1){
-                question = dao.geopgraphy.get(1);
+                question = dao.geopgraphy.get(2);
+                question2 = dao.geopgraphy.get(3);
                 player1.sendMessage(question);
+                player1.sendMessage(question2);
                 player2.sendMessage(question);
+                player2.sendMessage(question2);
             }
             categoryIndex++;
         }
@@ -57,9 +65,12 @@ public class ServerSideGame extends Thread{
                 player2.sendMessage(question2);
             }//skickar frågan till player två också
             else if (categoryIndex == 1){
-                question = dao.pleasure.get(1);
+                question = dao.pleasure.get(2);
+                question2 = dao.pleasure.get(3);
                 player1.sendMessage(question);
+                player1.sendMessage(question2);
                 player2.sendMessage(question);
+                player2.sendMessage(question2);
             }
             categoryIndex++;
         }
@@ -73,9 +84,12 @@ public class ServerSideGame extends Thread{
                 player2.sendMessage(question2);
             }//skickar frågan till player två också
             else if (categoryIndex == 1){
-                question = dao.sport.get(1);
+                question = dao.sport.get(2);
+                question2 = dao.sport.get(3);
                 player1.sendMessage(question);
+                player1.sendMessage(question2);
                 player2.sendMessage(question);
+                player2.sendMessage(question2);
             }
             categoryIndex++;
         }
@@ -89,9 +103,12 @@ public class ServerSideGame extends Thread{
                 player2.sendMessage(question2);
             }//skickar frågan till player två också
             else if (categoryIndex == 1){
-                question = dao.mathematics.get(1);
+                question = dao.mathematics.get(2);
+                question2 = dao.mathematics.get(3);
                 player1.sendMessage(question);
+                player1.sendMessage(question2);
                 player2.sendMessage(question);
+                player2.sendMessage(question2);
             }
             categoryIndex++;
         }
