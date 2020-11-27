@@ -46,14 +46,14 @@ public class ServerSideGame extends Thread{
         }
         else if (((String)input).equals(question.getAnswer())){
             player1.sendMessage("Svaret är korrekt! " + input);
-            //player2.sendMessage("Svaret är korrekt! " + input);
+
             player1.sendMessage("End of game");
-            //player2.sendMessage("End of game");
+
         } else {
             player1.sendMessage("Svaret är fel! " + input);
-           // player2.sendMessage("Svaret är fel! " + input);
+
             player1.sendMessage("End of game");
-            //player2.sendMessage("End of game");
+
         }
 
     }

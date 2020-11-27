@@ -33,13 +33,10 @@ public class NewGamePanel extends JPanel {
         setSize(400, 500);
         gameFrame.setLocationRelativeTo(null);
 
-        newSpel.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                ClientGame clientGame = new ClientGame(gameFrame);
-                Thread thread = new Thread(clientGame);
-                thread.start();
-            }
+        newSpel.addActionListener(e -> {
+            ClientGame clientGame = new ClientGame(gameFrame);
+            Thread thread = new Thread(clientGame);
+            thread.start();
         });
         add(newSpel);
 
