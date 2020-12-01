@@ -25,6 +25,13 @@ public class ClientHandler extends Thread{
         this.clientSocket = clientSocket;
         this.questionsDatabase = questionsDatabase;
         this.game = game;
+
+        try {
+            ObjectOutputStream writer = new ObjectOutputStream(clientSocket.getOutputStream());
+            oos = writer;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setOpponent(ClientHandler opponent) {
@@ -38,10 +45,9 @@ public class ClientHandler extends Thread{
     @Override
     public void run() {
         try {
-            ObjectOutputStream writer = new ObjectOutputStream(clientSocket.getOutputStream());
+
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
-            oos = writer;
-            ois = reader;
+            //ois = reader;
 
             //writer.writeObject("Välj kategori");
             //methoden setReady från serverside game.

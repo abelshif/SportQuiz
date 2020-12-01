@@ -1,5 +1,6 @@
 package Klient.gui;
 
+import Klient.ClientGame;
 import Server.Question;
 
 import javax.swing.*;
@@ -22,6 +23,8 @@ public class QuestionPanel extends JPanel {
     Font alternativesFont = new Font("Tahoma", Font.PLAIN, 25);
 
     JLabel label;
+    JLabel player1;
+    JLabel player2;
     JButton b1;
     JButton b2;
     JButton b3;
@@ -31,6 +34,7 @@ public class QuestionPanel extends JPanel {
 
     private ObjectOutputStream oos;
 
+    public QuestionPanel(){}
     public QuestionPanel(Question newQuestion) {
         setLayout(null);
         setBackground(new Color(127, 61, 61));
@@ -56,6 +60,7 @@ public class QuestionPanel extends JPanel {
 
         label.setBounds(10, 100, 400,50);
         label.setFont(questionFont);
+
 
         b1.setFont(alternativesFont);
         b2.setFont(alternativesFont);

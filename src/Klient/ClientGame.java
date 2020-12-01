@@ -1,6 +1,7 @@
 package Klient;
 
 import Klient.gui.GameFrame;
+import Klient.gui.QuestionPanel;
 import Server.Question;
 
 import java.awt.*;
@@ -21,12 +22,14 @@ import java.util.List;
  * Copyright: MIT
  */
 public class ClientGame implements Runnable {
-    int index = 0;
+    QuestionPanel questionPanel = new QuestionPanel();
+    public List<Integer> resultList;
     List<Object> questionList = new ArrayList<>();
 
 
     GameFrame gameFrame;
 
+    public ClientGame(){}
     public ClientGame (GameFrame gameFrame) {
 
         this.gameFrame = gameFrame;
@@ -65,14 +68,12 @@ public class ClientGame implements Runnable {
                         gameFrame.changeToCatagoriesPanel();
                     }
                     else if(resultat.contains("End of game")) {
-                        //Ändra färg
                         socketToServer.close();
                         gameFrame.setObjectOutputStream(null);
                         gameFrame.changeToNewGamePanel();
                         break;
                     }
                     else if(resultat.contains("korrekt")) {
-                        //Ändra färg
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.GREEN);
                         gameFrame.getQuestionPanel().setOpaque(true);
                         //Thread.sleep(1000);
@@ -89,11 +90,16 @@ public class ClientGame implements Runnable {
                         questionList = new ArrayList<>();
                     }
                     else {
-                        //Ändra färg
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.RED);
                         gameFrame.getQuestionPanel().setOpaque(true);
                         //Thread.sleep(1000);
                     }
+                }
+                else if (incomingObject instanceof Integer){
+                    int result = (int)incomingObject;
+                    resultList = new ArrayList<>();
+                    resultList.add(result);
+                    System.out.println("***********" + result);
                 }
             }
         } catch (IOException | ClassNotFoundException e) {
