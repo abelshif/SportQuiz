@@ -20,18 +20,23 @@ public class ServerSideGame extends Thread{
     int indexP1 = 0;
     int indexP2 = 0;
     int categoryIndex = 0;
-    int correctAnswer = 0;
+    int correctAnswerPlayer1 = 0;
+    int correctAnswerPlayer2=0;
+
 
     DAO dao;
     Question question;
     Question question2;
 
 
+
+
+
     public ServerSideGame(DAO dao){
         this.dao = dao;
     }
      // clienthandler som parameter för att veta vilken spelare som har skickat objectet(input)
-    public void game(Object input, ClientHandler player){
+    public synchronized void game(Object input, ClientHandler player){
 
         //player1.sendMessage("Välj kategori");
         //player2.sendMessage("Avvakta medans player1 väljer kategori");
@@ -113,20 +118,20 @@ public class ServerSideGame extends Thread{
             categoryIndex++;
         }
         //kollar vilken spelare som skickade svaret.
-        else if (((String)input).equals(question.getAnswer())){
+        else if (((String)input).equals(question.getAnswer()) || ((String)input).equals(question2.getAnswer())){
             if(player == player1) {
                 player1.sendMessage("Svaret är korrekt! " + input);
                 player1.sendMessage("Change question");
                 indexP1++;
-                correctAnswer++;
+                correctAnswerPlayer1++;
 
                 if (indexP1 == 2){
                     player1.sendMessage("Change to categorypanel");
-                    player1.sendMessage("" + correctAnswer);
+                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
                 }
                 else if (indexP1 == 4){
                     player1.sendMessage("End of game");
-                    player1.sendMessage("" + correctAnswer);
+                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
 
                 }
 
@@ -134,15 +139,15 @@ public class ServerSideGame extends Thread{
                 player2.sendMessage("Svaret är korrekt! " + input);
                 player2.sendMessage("Change question");
                 indexP2++;
-                correctAnswer++;
+                correctAnswerPlayer2++;
 
                 if (indexP2 == 2){
                     player2.sendMessage("Change to categorypanel");
-                    player2.sendMessage("" + correctAnswer);
+                    player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
                 }
                 else if (indexP2 == 4){
                     player2.sendMessage("End of game");
-                    player2.sendMessage("" + correctAnswer);
+                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
                 }
             }
         } else {
@@ -153,9 +158,11 @@ public class ServerSideGame extends Thread{
 
                 if (indexP1 == 2){
                     player1.sendMessage("Change to categorypanel");
+                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
                 }
                 else if (indexP1 == 4){
                     player1.sendMessage("End of game");
+                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
                 }
             } else {
                 player2.sendMessage("Svaret är fel! " + input);
@@ -164,9 +171,12 @@ public class ServerSideGame extends Thread{
 
                 if (indexP2 == 2){
                     player2.sendMessage("Change to categorypanel");
+                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
+
                 }
                 else if (indexP2 == 4){
                     player2.sendMessage("End of game");
+                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
                 }
 
             }
