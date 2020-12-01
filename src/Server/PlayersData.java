@@ -21,26 +21,19 @@ public class PlayersData {
 
     public PlayersData() {
         playerListOne.add(player1);
-        playerListOne.add(player2);
-        playerListOne.add(player3);
-        playerListOne.add(player4);
-        playerListOne.add(player5);
 
         playerListTwo.add(player6);
-        playerListTwo.add(player7);
-        playerListTwo.add(player8);
-        playerListTwo.add(player9);
-        playerListTwo.add(player10);
+
     }
     public PlayersDAO getRandomPlayer1() {
         // Random random = new Random();
-        int randomPlayer = (int) (Math.random() * 5);
+        int randomPlayer = (int) (Math.random() * 1);
         return playerListOne.get(randomPlayer);
     }
 
     public PlayersDAO getRandomPlayer2() {
         //Random random = new Random();
-        int randomPlayer = (int) (Math.random() * 5);
+        int randomPlayer = (int) (Math.random() * 1);
         return playerListTwo.get(randomPlayer);
     }
     public static void main(String[] args) {
