@@ -124,31 +124,22 @@ public class ServerSideGame extends Thread{
                 player1.sendMessage("Change question");
                 indexP1++;
                 correctAnswerPlayer1++;
-
-                if (indexP1 == 2){
-                    player1.sendMessage("Change to categorypanel");
-                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
-                }
-                else if (indexP1 == 4){
-                    player1.sendMessage("End of game");
-                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
-
-                }
-
             } else {
                 player2.sendMessage("Svaret är korrekt! " + input);
                 player2.sendMessage("Change question");
                 indexP2++;
                 correctAnswerPlayer2++;
-
-                if (indexP2 == 2){
-                    player2.sendMessage("Change to categorypanel");
-                    player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
-                }
-                else if (indexP2 == 4){
-                    player2.sendMessage("End of game");
-                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
-                }
+            }
+            if (indexP1 == 2 && indexP2 == 2){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player2.sendMessage("Change to categorypanel");
+                player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
+            }
+            else if (indexP1 == 4 && indexP2 == 4){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player1.sendMessage("End of game");
+                player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
+                player2.sendMessage("End of game");
             }
         } else {
             if(player == player1) {
@@ -156,29 +147,21 @@ public class ServerSideGame extends Thread{
                 player1.sendMessage("Change question");
                 indexP1++;
 
-                if (indexP1 == 2){
-                    player1.sendMessage("Change to categorypanel");
-                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
-                }
-                else if (indexP1 == 4){
-                    player1.sendMessage("End of game");
-                    player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
-                }
             } else {
                 player2.sendMessage("Svaret är fel! " + input);
                 player2.sendMessage("Change question");
                 indexP2++;
-
-                if (indexP2 == 2){
-                    player2.sendMessage("Change to categorypanel");
-                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
-
-                }
-                else if (indexP2 == 4){
-                    player2.sendMessage("End of game");
-                    player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
-                }
-
+            }
+            if (indexP1 == 2 && indexP2 == 2){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player2.sendMessage("Change to categorypanel");
+                player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
+            }
+            else if (indexP1 == 4 && indexP2 == 4){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player1.sendMessage("End of game");
+                player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
+                player2.sendMessage("End of game");
             }
         }
 

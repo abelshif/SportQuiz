@@ -64,6 +64,7 @@ public class ClientGame implements Runnable {
                 }
                 else  if (incomingObject instanceof Score){
                     gameFrame.getQuestionPanel().setScoreLabel((Score) incomingObject);
+                    questionList = new ArrayList<>();
                 }
                 else if(incomingObject instanceof String) {
                     String resultat = (String) incomingObject;
@@ -93,7 +94,7 @@ public class ClientGame implements Runnable {
                     else if (resultat.equalsIgnoreCase("Change to categorypanel")){
                         gameFrame.changeToCatagoriesPanel();
                         Thread.sleep(1000);
-                        questionList = new ArrayList<>();
+
                     }
                     else {
                         //Ändra färg
