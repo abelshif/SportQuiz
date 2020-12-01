@@ -47,10 +47,8 @@ public class ClientHandler extends Thread{
         try {
 
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
-            //ois = reader;
+            ois = reader;
 
-            //writer.writeObject("Välj kategori");
-            //methoden setReady från serverside game.
             game.setReady(this);
 
             Object input;
