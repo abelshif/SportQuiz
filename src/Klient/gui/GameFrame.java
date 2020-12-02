@@ -15,7 +15,6 @@ import java.util.List;
  * Copyright: MIT
  */
 public class GameFrame extends JFrame {
-
     private QuestionPanel questionPanel;
     private NewGamePanel newGamePanel;
     private JPanel mainPanel = new JPanel(new BorderLayout());

@@ -5,10 +5,10 @@ import java.util.Random;
 public class PlayersData {
     public final List<PlayersDAO> playerListOne= new ArrayList<>();
     public final List<PlayersDAO> playerListTwo=new ArrayList<>();
-    //players list one
+
     PlayersDAO player1 = new PlayersDAO("John");
 
-    //players list two
+
     PlayersDAO player6 = new PlayersDAO("Leo");
 
     public PlayersData() {
@@ -18,13 +18,11 @@ public class PlayersData {
 
     }
     public PlayersDAO getRandomPlayer1() {
-        // Random random = new Random();
         int randomPlayer = (int) (Math.random() * 1);
         return playerListOne.get(randomPlayer);
     }
 
     public PlayersDAO getRandomPlayer2() {
-        //Random random = new Random();
         int randomPlayer = (int) (Math.random() * 1);
         return playerListTwo.get(randomPlayer);
     }

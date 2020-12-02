@@ -120,18 +120,6 @@ public class QuestionPanel extends JPanel {
         System.out.println(question.getQuestion());
         validate();
     }
-    private void labelProperties(JLabel userLabel1, JLabel scoreLabel1) {
-
-        userLabel1.setFont(new Font("Verdana", Font.PLAIN, 14));
-        userLabel1.setBackground(Color.MAGENTA);
-        userLabel1.setForeground(Color.YELLOW);
-
-        scoreLabel1.setText("Score: "+ ClientGame.getCorrectSvar());
-        scoreLabel1.setFont(new Font("Verdana", Font.PLAIN, 14));
-        scoreLabel1.setBackground(Color.MAGENTA);
-        scoreLabel1.setForeground(Color.YELLOW);
-
-    }
 
     public void setScoreLabel(Score score){
         System.out.println(score.getYourScore() + " " + score.getOpponentScore());
