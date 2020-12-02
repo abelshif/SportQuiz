@@ -1,7 +1,5 @@
 package Klient.gui;
 
-import Klient.ClientGame;
-import Server.PlayersData;
 import Server.Question;
 import Server.Score;
 
@@ -20,15 +18,13 @@ import java.io.ObjectOutputStream;
  * Copyright: MIT
  */
 public class QuestionPanel extends JPanel {
-    PlayersData playersData = new PlayersData();//
-
     Font questionFont = new Font("Tahoma", Font.BOLD, 15);
     Font alternativesFont = new Font("Tahoma", Font.PLAIN, 25);
 
-    JLabel userLabel=new JLabel();//
-    JLabel scoreLabel=new JLabel();//
-    JLabel userLabel1=new JLabel();//
-    JLabel scoreLabel1=new JLabel();//
+    JLabel userLabel=new JLabel();
+    JLabel scoreLabel=new JLabel();
+    JLabel userLabel1=new JLabel();
+    JLabel scoreLabel1=new JLabel();
 
     JLabel label;
     JButton b1;
@@ -71,10 +67,10 @@ public class QuestionPanel extends JPanel {
         b3.setFont(alternativesFont);
         b4.setFont(alternativesFont);
 
-        add(userLabel);//
-        add(scoreLabel);//
-        add(userLabel1);//
-        add(scoreLabel1);//
+        add(userLabel);
+        add(scoreLabel);
+        add(userLabel1);
+        add(scoreLabel1);
 
         add(label);
         add(b1);
@@ -82,23 +78,23 @@ public class QuestionPanel extends JPanel {
         add(b3);
         add(b4);
 
-        userLabel.setLocation(10, 25);//
-        userLabel.setSize(120, 80);//
-        userLabel.setVisible(true);//
+        userLabel.setLocation(10, 25);
+        userLabel.setSize(120, 80);
+        userLabel.setVisible(true);
 
         scoreLabel.setText("Score: ");
-        scoreLabel.setLocation(10, 45);//
-        scoreLabel.setSize(80, 80);//
-        scoreLabel.setVisible(true);//
+        scoreLabel.setLocation(10, 45);
+        scoreLabel.setSize(80, 80);
+        scoreLabel.setVisible(true);
 
-        userLabel1.setLocation(250, 25);//
-        userLabel1.setSize(120, 80);//
+        userLabel1.setLocation(250, 25);
+        userLabel1.setSize(120, 80);
         userLabel1.setVisible(true);//
 
         scoreLabel1.setText("Score: ");
-        scoreLabel1.setLocation(250, 45);//
-        scoreLabel1.setSize(80, 80);//
-        scoreLabel1.setVisible(true);//
+        scoreLabel1.setLocation(250, 45);
+        scoreLabel1.setSize(80, 80);
+        scoreLabel1.setVisible(true);
 
     }
 
@@ -106,12 +102,11 @@ public class QuestionPanel extends JPanel {
         label.setText(question.getQuestion());
         label.revalidate();
         label.repaint();
-        userLabel.setText("Player 1: " + playersData.getRandomPlayer1().getName().toUpperCase());//
-        userLabel.setAlignmentX(SwingConstants.WEST);//
-        //labelProperties(userLabel, scoreLabel);//
-        userLabel1.setText("Player 2: " + playersData.getRandomPlayer2().getName().toUpperCase());//
-        userLabel1.setAlignmentX(SwingConstants.EAST);//
-        //labelProperties(userLabel1, scoreLabel1);//
+        userLabel.setText("Player 1: ");
+        userLabel.setAlignmentX(SwingConstants.WEST);
+        userLabel1.setText("Player 2: ");
+        userLabel1.setAlignmentX(SwingConstants.EAST);
+
 
         b1.setText(question.getAlternatives().get(0));
         b2.setText(question.getAlternatives().get(1));

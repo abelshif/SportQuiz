@@ -6,15 +6,11 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ScorePanel extends JPanel {
-
-
         JLabel endScore1;
         JLabel endScore2;
 
-        QuestionPanel questionPanel;
 
         public ScorePanel() {
-
             endScore1 = new JLabel();
             endScore2 = new JLabel();
 
@@ -38,5 +34,4 @@ public class ScorePanel extends JPanel {
             endScore1.setText("Score: "+ score.getYourScore());
             endScore2.setText("Score: "+ score.getOpponentScore());
         }
-
 }
