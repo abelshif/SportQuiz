@@ -1,7 +1,9 @@
 package Klient.gui;
 
 import Klient.ClientGame;
+import Server.PlayersData;
 import Server.Question;
+import Server.Score;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,13 +20,17 @@ import java.io.ObjectOutputStream;
  * Copyright: MIT
  */
 public class QuestionPanel extends JPanel {
+    PlayersData playersData = new PlayersData();//
 
     Font questionFont = new Font("Tahoma", Font.BOLD, 15);
     Font alternativesFont = new Font("Tahoma", Font.PLAIN, 25);
 
+    JLabel userLabel=new JLabel();//
+    JLabel scoreLabel=new JLabel();//
+    JLabel userLabel1=new JLabel();//
+    JLabel scoreLabel1=new JLabel();//
+
     JLabel label;
-    JLabel player1;
-    JLabel player2;
     JButton b1;
     JButton b2;
     JButton b3;
@@ -34,7 +40,6 @@ public class QuestionPanel extends JPanel {
 
     private ObjectOutputStream oos;
 
-    public QuestionPanel(){}
     public QuestionPanel(Question newQuestion) {
         setLayout(null);
         setBackground(new Color(127, 61, 61));
@@ -61,29 +66,65 @@ public class QuestionPanel extends JPanel {
         label.setBounds(10, 100, 400,50);
         label.setFont(questionFont);
 
-
         b1.setFont(alternativesFont);
         b2.setFont(alternativesFont);
         b3.setFont(alternativesFont);
         b4.setFont(alternativesFont);
+
+        add(userLabel);//
+        add(scoreLabel);//
+        add(userLabel1);//
+        add(scoreLabel1);//
 
         add(label);
         add(b1);
         add(b2);
         add(b3);
         add(b4);
+
+        userLabel.setLocation(10, 25);//
+        userLabel.setSize(120, 80);//
+        userLabel.setVisible(true);//
+
+        scoreLabel.setText("Score: ");
+        scoreLabel.setLocation(10, 45);//
+        scoreLabel.setSize(80, 80);//
+        scoreLabel.setVisible(true);//
+
+        userLabel1.setLocation(250, 25);//
+        userLabel1.setSize(120, 80);//
+        userLabel1.setVisible(true);//
+
+        scoreLabel1.setText("Score: ");
+        scoreLabel1.setLocation(250, 45);//
+        scoreLabel1.setSize(80, 80);//
+        scoreLabel1.setVisible(true);//
+
     }
 
     public void addQuestionToPanel(Question question) {
         label.setText(question.getQuestion());
         label.revalidate();
         label.repaint();
+        userLabel.setText("Player 1: " + playersData.getRandomPlayer1().getName().toUpperCase());//
+        userLabel.setAlignmentX(SwingConstants.WEST);//
+        //labelProperties(userLabel, scoreLabel);//
+        userLabel1.setText("Player 2: " + playersData.getRandomPlayer2().getName().toUpperCase());//
+        userLabel1.setAlignmentX(SwingConstants.EAST);//
+        //labelProperties(userLabel1, scoreLabel1);//
+
         b1.setText(question.getAlternatives().get(0));
         b2.setText(question.getAlternatives().get(1));
         b3.setText(question.getAlternatives().get(2));
         b4.setText(question.getAlternatives().get(3));
         System.out.println(question.getQuestion());
         validate();
+    }
+
+    public void setScoreLabel(Score score){
+        System.out.println(score.getYourScore() + " " + score.getOpponentScore());
+        scoreLabel.setText("Score: "+ score.getYourScore());
+        scoreLabel1.setText("Score: "+ score.getOpponentScore());
     }
 
     public void setClickedButtonColor(Color color) {

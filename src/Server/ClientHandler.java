@@ -49,11 +49,11 @@ public class ClientHandler extends Thread{
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
             ois = reader;
 
+
             game.setReady(this);
 
             Object input;
             while ((input = reader.readObject()) != null) {
-                //this, för att kunna se vem som skickade objectet input.
                 game.game(input, this);
                 System.out.println("Get message " + input);
 
@@ -73,3 +73,4 @@ public class ClientHandler extends Thread{
         }
     }
 }
+

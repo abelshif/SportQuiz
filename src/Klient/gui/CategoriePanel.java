@@ -64,6 +64,4 @@ public class CategoriePanel extends JPanel {
             }
         }
     }
-
 }
-

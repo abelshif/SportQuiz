@@ -69,26 +69,4 @@ public class DAO {
         Collections.shuffle(sport);
 
     }
-
-    public String mathAnswer() {return mathematics.get(0).getAnswer();}
-    public String mathAnswer2() {return mathematics.get(1).getAnswer();}
-
-    public String sportAnswer() {return sport.get(0).getAnswer();}
-    public String sportAnswer2() {return sport.get(1).getAnswer();}
-
-    public String geoAnswer() {return geopgraphy.get(0).getAnswer();}
-    public String geoAnswer2() {return geopgraphy.get(1).getAnswer();}
-
-    public String pleasureAnswer() {return pleasure.get(0).getAnswer();}
-    public String pleasureAnswer2() {return pleasure.get(1).getAnswer();}
-
-
-    public Object handleQuestion(String input) {
-
-        return m1.getQuestion();
-    }
-
-    public static void main(String[] args) {
-        DAO dao = new DAO();
-    }
 }

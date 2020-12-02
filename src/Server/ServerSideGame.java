@@ -19,8 +19,9 @@ public class ServerSideGame extends Thread{
     int indexP1 = 0;
     int indexP2 = 0;
     int categoryIndex = 0;
-    int correctAnswerP1 = 0;
-    int correctAnswerP2 = 0;
+    int correctAnswerPlayer1 = 0;
+    int correctAnswerPlayer2=0;
+
 
     DAO dao;
     Question question;
@@ -31,8 +32,8 @@ public class ServerSideGame extends Thread{
         this.dao = dao;
     }
 
-    public void game(Object input, ClientHandler player){
-        System.out.println("Kommer in i game metoden");
+    public synchronized void game(Object input, ClientHandler player){
+
         if(((String)input).equals("Geografi")){
             if (categoryIndex == 0) {
                 question = dao.geopgraphy.get(0);
@@ -114,66 +115,47 @@ public class ServerSideGame extends Thread{
                 player1.sendMessage("Svaret är korrekt! " + input);
                 player1.sendMessage("Change question");
                 indexP1++;
-                correctAnswerP1++;
-                if (indexP1 == 2){
-                    player1.sendMessage("Change to categorypanel");
-                    player1.sendMessage(correctAnswerP1);
-                    player1.sendMessage(correctAnswerP2);
-                }
-                else if (indexP1 == 4){
-                    player1.sendMessage("End of game");
-                    player1.sendMessage(correctAnswerP1);
-                    player1.sendMessage(correctAnswerP2);
-                }
-            }
-            else {
+                correctAnswerPlayer1++;
+            } else {
                 player2.sendMessage("Svaret är korrekt! " + input);
                 player2.sendMessage("Change question");
                 indexP2++;
-                correctAnswerP2++;
-                if (indexP2 == 2){
-                    player2.sendMessage("Change to categorypanel");
-                    player2.sendMessage(correctAnswerP2);
-                    player2.sendMessage(correctAnswerP1);
-                }
-                else if (indexP2 == 4){
-                    player2.sendMessage("End of game");
-                    player2.sendMessage(correctAnswerP2);
-                    player2.sendMessage(correctAnswerP1);
-                }
+                correctAnswerPlayer2++;
+            }
+            if (indexP1 == 2 && indexP2 == 2){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player2.sendMessage("Change to categorypanel");
+                player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
+            }
+            else if (indexP1 == 4 && indexP2 == 4){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player1.sendMessage("End of game");
+                player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
+                player2.sendMessage("End of game");
             }
         } else {
             if(player == player1) {
                 player1.sendMessage("Svaret är fel! " + input);
                 player1.sendMessage("Change question");
                 indexP1++;
-                if (indexP1 == 2){
-                    player1.sendMessage("Change to categorypanel");
-                    player1.sendMessage(correctAnswerP1);
-                    player1.sendMessage(correctAnswerP2);
-                }
-                else if (indexP1 == 4){
-                    player1.sendMessage("End of game");
-                    player1.sendMessage(correctAnswerP1);
-                    player1.sendMessage(correctAnswerP2);
-                }
+
             } else {
                 player2.sendMessage("Svaret är fel! " + input);
                 player2.sendMessage("Change question");
                 indexP2++;
-                if (indexP2 == 2){
-                    player2.sendMessage("Change to categorypanel");
-                    player2.sendMessage(correctAnswerP2);
-                    player2.sendMessage(correctAnswerP1);
-                }
-                else if (indexP2 == 4){
-                    player2.sendMessage("End of game");
-                    player2.sendMessage(correctAnswerP2);
-                    player2.sendMessage(correctAnswerP1);
-                }
+            }
+            if (indexP1 == 2 && indexP2 == 2){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player2.sendMessage("Change to categorypanel");
+                player2.sendMessage(new Score(correctAnswerPlayer2,correctAnswerPlayer1));
+            }
+            else if (indexP1 == 4 && indexP2 == 4){
+                player1.sendMessage(new Score(correctAnswerPlayer1, correctAnswerPlayer2));
+                player1.sendMessage("End of game");
+                player2.sendMessage(new Score(correctAnswerPlayer2, correctAnswerPlayer1));
+                player2.sendMessage("End of game");
             }
         }
-
     }
 
     public void setPlayer1(ClientHandler player1) {
