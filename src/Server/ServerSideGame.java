@@ -35,7 +35,7 @@ public class ServerSideGame extends Thread{
     public ServerSideGame(DAO dao){
         this.dao = dao;
     }
-     // clienthandler som parameter för att veta vilken spelare som har skickat objectet(input)
+    // clienthandler som parameter för att veta vilken spelare som har skickat objectet(input)
     public synchronized void game(Object input, ClientHandler player){
 
         //player1.sendMessage("Välj kategori");
@@ -174,7 +174,7 @@ public class ServerSideGame extends Thread{
     public void setPlayer2(ClientHandler player2) {
         this.player2 = player2;
     }
-// add setReady metod för att skicka första medelandet när de är redo.
+    // add setReady metod för att skicka första medelandet när de är redo.
     public void setReady(ClientHandler player) {
         if(player == player1) {
             player1.sendMessage("Välj kategori");

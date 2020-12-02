@@ -1,6 +1,7 @@
 package Klient;
 
 import Klient.gui.GameFrame;
+import Klient.gui.QuestionPanel;
 import Server.Question;
 import Server.Score;
 
@@ -12,6 +13,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
 
 
 /**
@@ -89,24 +91,24 @@ public class ClientGame implements Runnable {
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.GREEN);
                         gameFrame.getQuestionPanel().setOpaque(true);
                         //correctSvar++;
-                        Thread.sleep(1000);
+                        //Thread.sleep(1000);
                     }
                     else if (resultat.equalsIgnoreCase("Change question")){
                         gameFrame.getQuestionPanel().addQuestionToPanel((Question) questionList.get(1));
                         gameFrame.changeToQuestionPanel();
 
-                        Thread.sleep(1000);
+                        //Thread.sleep(1000);
                     }
                     else if (resultat.equalsIgnoreCase("Change to categorypanel")){
                         gameFrame.changeToCatagoriesPanel();
-                        Thread.sleep(1000);
+                        //Thread.sleep(1000);
 
                     }
                     else {
                         //Ändra färg
                         gameFrame.getQuestionPanel().setClickedButtonColor(Color.RED);
                         gameFrame.getQuestionPanel().setOpaque(true);
-                        Thread.sleep(1000);
+                        //Thread.sleep(1000);
                     }
                 }
             }
