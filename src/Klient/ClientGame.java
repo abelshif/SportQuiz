@@ -1,7 +1,6 @@
 package Klient;
 
 import Klient.gui.GameFrame;
-import Klient.gui.QuestionPanel;
 import Server.Question;
 import Server.Score;
 
@@ -13,7 +12,6 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 
 
 /**
