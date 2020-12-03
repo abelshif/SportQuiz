@@ -76,7 +76,7 @@ public class ClientGame implements Runnable {
 
                         gameFrame.changeToScorePanel();
 
-                        Thread.sleep(10000);
+                        Thread.sleep(5000);
                         gameFrame.changeToNewGamePanel();
 
                         break;

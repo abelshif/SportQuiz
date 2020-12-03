@@ -45,7 +45,6 @@ public class ClientHandler extends Thread{
     @Override
     public void run() {
         try {
-
             ObjectInputStream reader = new ObjectInputStream(clientSocket.getInputStream());
             ois = reader;
 

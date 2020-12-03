@@ -17,11 +17,16 @@ public class ScorePanel extends JPanel {
             setLayout(null);
             setBackground(new Color(127, 61, 61));
 
-            endScore1.setBounds(30, 200, 155, 50);
-            endScore2.setBounds(215, 200, 155, 50);
+            endScore1.setBounds(30, 100, 155, 100);
+            endScore2.setBounds(30, 300, 155, 100);
+
+            endScore1.setFont(new Font("Serif", Font.PLAIN, 20));
+            endScore2.setFont(new Font("Serif", Font.PLAIN, 20));
 
             add(endScore1);
             add(endScore2);
+
+
 
             setLocation(600, 90);
             setVisible(true);
@@ -31,7 +36,7 @@ public class ScorePanel extends JPanel {
 
         public void setScoreLabel(Score score){
             System.out.println(score.getYourScore() + " " + score.getOpponentScore());
-            endScore1.setText("Score: "+ score.getYourScore());
-            endScore2.setText("Score: "+ score.getOpponentScore());
+            endScore1.setText("Player1 score: "+ score.getYourScore());
+            endScore2.setText("Player2 score: "+ score.getOpponentScore());
         }
 }

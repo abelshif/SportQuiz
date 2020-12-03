@@ -16,7 +16,6 @@ public class DAO {
     public final List<Question> geopgraphy = new ArrayList<>();
     public final List<Question> pleasure = new ArrayList<>();
     public final List<Question> sport = new ArrayList<>();
-    Object test = "";
 
     Question m1 = new Question("2+2=?", "4", List.of("6","3","4","8"));
     Question m2 = new Question("10 + 10 * 10 / 10 = ?", "20", List.of("100","20","2","1"));
@@ -38,7 +37,6 @@ public class DAO {
     Question s2 = new Question("I vilket lag började Zlatan spela?", "Malmö", List.of("Brommapojkarna", "Malmö", "AIK", "Falkonberg"));
     Question s3 = new Question("Vilken svensk man spelade för Arsenal för första gången?", "Fredrik Ljungberg", List.of("Fredrik Ljungberg", "Kalle", "Zlatan", "Karl Gustaf"));
     Question s4 = new Question("Vad är ett annat namn för \"pingis\"?", "Bord Tennis", List.of("Bord Tennis", "Biljard", "Tennis", "Handboll"));
-
 
 
     public DAO() {
